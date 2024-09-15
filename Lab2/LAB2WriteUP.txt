@@ -1,0 +1,171 @@
+2
+	a. Animal
+	b. self, it represents the animal object created when the class is called
+	c. speak, prints "Speaking! What do I say??"
+	d. run() is not a method for the class based on the indentation, also because it calls the animal class and makes and animal object.
+	e. run makes an animal object and calls the speak method
+
+3
+	a. 
+Speaking! What do I say??
+
+	b. the output was expected because it was easy to follow  the order things got ran
+
+6
+	b. 
+Speaking! What do I say??
+Bunny slept
+Bunny ate carrot!
+
+	d. 
+Speaking! What do I say??
+Bunny slept
+
+	e. the animal didn't eat since it wasn't hungry before it slept on 6.d 
+
+9 I expected the output to include what was done before plus a_bird to print "I can fly!"
+
+10 
+Speaking! What do I say??
+Bunny slept
+I is flying!
+
+12 I expect the sleep function from the animal class to execute for the bird class
+
+14 this concept is called inheritance
+
+16 This will throw an error because the animal class does not have a fly method
+
+18 inheritance only travels from parent classes to sub classes and not vice versa
+
+21 we expect "chirp chirp chirp" to be printed since we overwrote the speak method from the Animal class
+
+22
+Speaking! What do I say??
+Bunny slept
+I can fly!
+Big Bird slept
+chirp chirp chirp
+
+23 this ran the speak() method defined in the Bird class, this concept is known as polymorphism
+
+24 the instructor gets inherited from the Animal class and it doesn't need one since we dont define any new attributes
+
+27 we might expect it to print the predetermined None value in the nest_location variable but well end up getting an error since we arnt passing the required name attribute to the Animal parent class when we call the constructor
+
+28
+Speaking! What do I say??
+Bunny slept
+I can fly!
+Traceback (most recent call last):
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 96, in <module>
+    run()
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 79, in run
+    a_bird.sleep()
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 20, in sleep
+    print(f"{self.name} slept")
+             ^^^^^^^^^
+AttributeError: 'Bird' object has no attribute 'name'
+
+29 we got the error from the Animal class from calling sleep() without a name passed through for the animal object
+
+30 super() acts as the parents class constructor that we can call within our subclass
+
+32 In that case "Hello" would be treated as the animals object name attribute
+
+33
+Speaking! What do I say??
+Bunny slept
+I can fly!
+Big Bird slept
+chirp chirp chirp
+None
+
+34 we needed to pass through the name attribute to our parent class which we are inheriting from in order to properly use the parents class's methods
+
+35 we want to restrict our attributes so that only the class its self as access to them such that they cannot be manipulated when we dont want them to
+
+38 we expect to get an error because the user is not supposed to have access to a protected object, since the '_' denotes to python that that attribute is protected from access outside of its class or subclasses
+
+39 
+True
+
+42 ok this time im more then confident that the '__' tells python that that attribute cannot be accessed outside of the class 
+
+43
+Traceback (most recent call last):
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 113, in <module>
+    run()
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 68, in run
+    print(a_bird.__healthy)
+          ^^^^^^^^^^^^^^^^
+AttributeError: 'Bird' object has no attribute '__healthy' 
+
+44 it seems that python only chooses to enforce the private status for attributes 
+
+46 
+	a. quickly adding getters and setters and just trying to access them from Animal("Bunny").get_healthy()
+	b.
+    def get_healthy(self):
+        return self.__healthy
+  ----------------------------------------------------
+    print(a_bird.__healthy)
+    print(Animal("Bunny").__healthy)
+    print(a_bird.get_healthy())
+    print(Animal("Bunny").get_healthy())
+
+	c.
+Traceback (most recent call last):
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 127, in <module>
+    run()
+  File "c:\Users\ryanc\Documents\Code\ENGR340\Lab2\inheritance_practice.py", line 79, in run
+    print(a_bird.__healthy)
+          ^^^^^^^^^^^^^^^^
+AttributeError: 'Bird' object has no attribute '__healthy'. Did you mean: 'get_healthy'?
+
+	d. we cannot access __healthy from a anything except the Animal class 
+
+47 
+	a. the private data is only accessible within animal class and that class's getter methods
+
+	b. when data needs to be private they will restrict it by not having getters and setters
+
+50
+	a. we dont have to do much but we dont have a access to the fly method from the bird class so we would need to make one here however fish cannot fly so we might just wanna make it known that fish cannot fly
+
+	b.
+def fly(self) -> None:
+        print("I can't fly")
+        
+def run():
+
+    #49
+    a_fish = fish("Nemo")
+    print(a_fish.name)
+    a_fish.swim()
+    a_fish.fly()
+    a_fish.speak()
+
+	c.
+Nemofish
+Just keep swimming
+I can't fly
+Speaking! What do I say??
+
+	d. initially i got a error however i added the fly() method to overcome that error, but since fish cannot fly i made it print that fish cannot fly
+
+51
+	a. fish is a subclass of animal so it has access to all of its methods and attributes that arnt explicitly private
+
+	b. fish and bird are both sub classes of Animal but do not have any other relation to each other and are completely separate.
+
+	c. it allows for clean and seamless downstream of needed data for different data types.
+
+
+
+
+
+
+
+
+
